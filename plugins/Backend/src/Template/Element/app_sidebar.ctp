@@ -24,71 +24,44 @@
     <div class="sidebar-content">
         <div class="nav-container">
             <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
-                <li class="nav-item <?=$page == 'dashboard' ? 'active' : ''?>">
+                <li class="nav-item <?=$page == 'posts' ? 'active' : ''?>">
                     <a
-                        href="<?=$this->Url->build(['prefix' => false, 'controller' => 'dashboard', 'action' => 'index']);?>">
-                        <i class="ft-home"></i>
-                        <span data-i18n="" class="menu-title">Dashboard</span>
+                        href="<?=$this->Url->build(['prefix' => false, 'controller' => 'post', 'action' => 'index']);?>">
+                        <i class="ft-bookmark"></i>
+                        <span data-i18n="" class="menu-title">Posts</span>
+                        <span class="tag badge badge-pill badge-dark float-right mr-1 mt-1">
+                        <?=$viewCounts['posts']?>
+                        </span>
                     </a>
                 </li>
-                <li class="nav-item <?=$page == 'images' ? 'active' : ''?>">
+                <li class="nav-item <?=$page == 'subreddits' ? 'active' : ''?>">
                     <a
                         href="<?=$this->Url->build(['prefix' => false, 'controller' => 'Images', 'action' => 'index']);?>">
-                        <i class="ft-image"></i>
-                        <span data-i18n="" class="menu-title">Images</span>
+                        <i class="ft-aperture" aria-hidden="true"></i>
+                        <span data-i18n="" class="menu-title">Subreddits</span>
                         <span class="tag badge badge-pill badge-dark float-right mr-1 mt-1">
-                        <?=$viewCounts['images']?>
+                        <?=$viewCounts['subreddits']?>
                         </span>
                     </a>
                 </li>                
-                <li class="nav-item <?=$page == 'trash' ? 'active' : ''?>">
+                <li class="nav-item <?=$page == 'accounts' ? 'active' : ''?>">
                     <a
-                        href="<?=$this->Url->build(['prefix' => false, 'controller' => 'Images', 'action' => 'trash']);?>">
-                        <i class="ft-trash"></i>
-                        <span data-i18n="" class="menu-title">Trash</span>
-                        <span class="tag badge badge-pill badge-dark float-right mr-1 mt-1">
-                        <?=$viewCounts['trash']?>
-                        </span>
-                    </a>
-                </li>                
-                <li class="nav-item <?=$page == 'users' ? 'active' : ''?>">
-                    <a
-                        href="<?=$this->Url->build(['prefix' => false, 'controller' => 'Users', 'action' => 'index']);?>">
-                        <i class="ft-users"></i>
-                        <span data-i18n="" class="menu-title">Users</span>
-                        <span class="tag badge badge-pill badge-dark float-right mr-1 mt-1">
-                            <?=$viewCounts['users']?>
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item <?=$page == 'user_banned' ? 'active' : ''?>">
-                    <a
-                        href="<?=$this->Url->build(['prefix' => false, 'controller' => 'users', 'action' => 'banned']);?>">
+                        href="<?=$this->Url->build(['prefix' => false, 'controller' => 'Accounts', 'action' => 'index']);?>">
                         <i class="ft-user"></i>
-                        <span data-i18n="" class="menu-title">Banned Users</span>
+                        <span data-i18n="" class="menu-title">Accounts</span>
                         <span class="tag badge badge-pill badge-dark float-right mr-1 mt-1">
-                        <?=$viewCounts['banned_users']?>
+                        <?=$viewCounts['accounts']?>
                         </span>
                     </a>
                 </li>
-                <li class="nav-item <?=$page == 'banned_ips' ? 'active' : ''?>">
-                    <a
-                        href="<?=$this->Url->build(['prefix' => false, 'controller' => 'users', 'action' => 'bannedIps']);?>">
-                        <i class="ft-navigation-2"></i>
-                        <span data-i18n="" class="menu-title">Banned IPs</span>
-                        <span class="tag badge badge-pill badge-dark float-right mr-1 mt-1">
-                        <?=$viewCounts['banned_ips']?>
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item <?=$page == 'settings' ? 'active' : ''?>">
+                <!-- <li class="nav-item <?=$page == 'settings' ? 'active' : ''?>">
                     <a
                         href="<?=$this->Url->build(['prefix' => false, 'controller' => 'GeneralSettings', 'action' => 'index']);?>">
                         <i class="ft-settings"></i>
                         <span data-i18n="" class="menu-title">Settings</span>
 
                     </a>
-                </li>
+                </li> -->
 
 
             </ul>

@@ -44,6 +44,9 @@ class AppController extends Controller
         parent::initialize();
 
         $this->loadModel('Users');
+        $this->loadModel('Posts');
+        $this->loadModel('Accounts');
+        $this->loadModel('Subreddits');
 
         $this->loadComponent('RequestHandler', [
             'enableBeforeRedirect' => false,
@@ -89,12 +92,10 @@ class AppController extends Controller
     private function getViewCounts()
     {
         return [
-            // 'users' => $this->ChvUsers->find('all')->count(),
-            // 'banned_users' => $this->ChvUsers->find('all')->where(['user_status'=>'banned'])->count(),
-            // 'banned_ips' => $this->ChvIpBans->find('all')->count(),
-            // 'images' => $this->ChvImages->find('all')->count(),
-            // 'trash' => $this->ChvImagesDeleted->find('all')->count(),
-            // 'images_pending_reviews' => $this->Custom->getPendingImageReviews()->count(),
+            'users' => $this->Users->find('all')->count(),
+            'accounts' => $this->Accounts->find('all')->count(),
+            'posts' => $this->Posts->find('all')->count(),
+            'subreddits' => $this->Subreddits->find('all')->count(),
         ];
 
     }

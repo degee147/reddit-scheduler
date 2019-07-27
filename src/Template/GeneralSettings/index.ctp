@@ -23,7 +23,7 @@
         <?php
             echo $this->Form->control('hostname', ['label'=>'Hostname (No trailing slashes)']);
             echo $this->Form->control('ban_message', ['label'=>'Ban Message']);
-            //echo $this->Form->control('starting', ['empty' => true, 'label'=>'Start Date (YYYY-MM-DD HH:MM)']);
+            echo $this->Form->control('starting', ['empty' => true, 'label'=>'Start Date (YYYY-MM-DD HH:MM)']);
             //echo $this->Form->control('ending', ['empty' => true, 'label'=>'End Date (YYYY-MM-DD HH:MM)']);
         ?>
     </fieldset>

@@ -29,15 +29,6 @@ class UsersController extends AppController
     public function index()
     {        
     }
-    public function banned()
-    {
-        $this->set('page', "user_banned");
-    }
-    public function bannedIps()
-    {
-        $this->set('page', "banned_ips");
-    }
-
     /**
      * View method
      *
@@ -140,7 +131,7 @@ class UsersController extends AppController
             $this->Flash->default(__('You\'re logged in'));
             return $this->redirect([
                 'prefix' => false,
-                'controller' => 'dashboard',
+                'controller' => 'posts',
                 'action' => 'index',
             ]);
         }
@@ -171,7 +162,7 @@ class UsersController extends AppController
 
                 return $this->redirect([
                     'prefix' => false,
-                    'controller' => 'dashboard',
+                    'controller' => 'posts',
                     'action' => 'index',
                 ]);
 

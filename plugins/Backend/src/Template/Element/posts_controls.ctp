@@ -1,29 +1,23 @@
 <div class="col-4">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <fieldset class="form-group">
-                <label for="maxAge">Max Age</label>
-                <input class="form-control" type="number" max="99" min="1" id="maxAge">
+                <label for=""></label>
+                <a href="<?=$this->Url->build(['action' => 'add']);?>" class="btn round btn-raised btn-dark">
+                    <i class="fa fa-plus"></i>&nbsp;New Post
+                </a>
             </fieldset>
         </div>
         <div class="col-md-4">
             <fieldset class="form-group">
-                <label for="status_one">Status 1</label>
-                <select class="form-control" id="status_one">
-                    <option value="all">All</option>
-                    <option value="review">Review</option>
-                    <option value="approved">Approved</option>
-                </select>
+                <label for="accountDropdown">Accounts</label>
+                <?=$this->Form->control('accountDropdown', ['templates' => ['inputContainer' => '{{content}}'], 'options' => $accounts, 'empty' => true, 'label' => false, 'id'=>'accountDropdown','class' => 'form-control select2_all', "style" => "width: 100%", 'required']);?>
             </fieldset>
         </div>
         <div class="col-md-4">
             <fieldset class="form-group">
-                <label for="status_two">Status 2</label>
-                <select class="form-control" id="status_two">
-                    <option value="all">All</option>
-                    <option value="safe">Safe</option>
-                    <option value="unsafe">Unsafe</option>
-                </select>
+                <label for="subredditDropdown">Subreddits</label>
+                <?=$this->Form->control('subredditDropdown', ['templates' => ['inputContainer' => '{{content}}'], 'options' => $subreddits, 'empty' => true, 'label' => false, 'id'=>'subredditDropdown','class' => 'form-control select2_all', "style" => "width: 100%", 'required']);?>
             </fieldset>
         </div>
 

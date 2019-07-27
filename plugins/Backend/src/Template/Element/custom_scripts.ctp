@@ -57,8 +57,12 @@
         // });
 
 
+        $('.select2_all').select2({
+            placeholder: 'All',
+            theme: "classic"
+        });
         $('.select2').select2({
-            placeholder: 'Select an option',
+            placeholder: 'Pick an option',
             theme: "classic"
         });
 

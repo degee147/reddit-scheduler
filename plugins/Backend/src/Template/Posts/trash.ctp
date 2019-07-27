@@ -8,7 +8,6 @@
                         <div class="col-8">
                             <h4 class="card-title">Deleted Images</h4>
                         </div>
-                        <?=$this->element('image_controls')?>
                     </div>
                 </div>
                 <div class="card-body collapse show">
@@ -18,7 +17,7 @@
                         <!-- <p class="card-text">Exporting data from a table can often be a key part of a complex application. The Buttons extension
                             for DataTables provides three plug-ins that provide overlapping functionality for data export.</p> -->
 
-                        <?php echo $this->element('images_table', ['ajax_url' => $this->Url->build(['prefix' => false, 'controller' => 'images', 'action' => 'getImagesAjax','deleted'])]) ?>
+                        <?php echo $this->element('posts_table', ['ajax_url' => $this->Url->build(['prefix' => false, 'controller' => 'images', 'action' => 'getImagesAjax','trash'])]) ?>
                     </div>
                 </div>
             </div>

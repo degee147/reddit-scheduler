@@ -47,7 +47,7 @@
 
     <link rel="stylesheet" href="<?=$this->Url->build('/', true);?>plugins/select2/select2.min.css">
     <link rel="stylesheet" href="<?=$this->Url->build('/', true);?>plugins/toastr/toastr.min.css">
-    <link rel="stylesheet" href="<?=$this->Url->build('/', true);?>plugins/sweetalert2/sweetalert2.min.css">
+    <!-- <link rel="stylesheet" href="<?=$this->Url->build('/', true);?>plugins/sweetalert2/sweetalert2.min.css"> -->
     <link rel="stylesheet" href="<?=$this->Url->build('/', true);?>plugins/select2/select2-bootstrap.min.css">
     <link href="<?=$this->Url->build('/', true);?>plugins/bootstrap-fileinput/css/fileinput.min.css" media="all" rel="stylesheet"
         type="text/css" />
@@ -81,6 +81,12 @@
     <script src="<?=$this->Url->build('/', true);?>app-assets/vendors/js/screenfull.min.js" type="text/javascript"></script>
     <script src="<?=$this->Url->build('/', true);?>app-assets/vendors/js/pace/pace.min.js" type="text/javascript"></script>
 
+    
+    <link rel="stylesheet" href="<?=$this->Url->build('/app-assets/', true);?>plugins/sweetalert/sweetalert.css" />
+    <script src="<?=$this->Url->build('/app-assets/', true);?>plugins/sweetalert/sweetalert.min.js"></script>
+
+
+
 
 </head>
 
@@ -110,7 +116,7 @@
                 <p class="clearfix text-muted text-sm-center px-2">
                     <span>Copyright &copy;
                         <?=date("Y")?>
-                        <a href="<?=$this->Url->build('/', true);?>" id="pixinventLink" target="_blank" class="text-bold-800 primary darken-2">Imge.to Admin</a>, All rights reserved. </span>
+                        <a href="<?=$this->Url->build('/', true);?>" id="pixinventLink" target="_blank" class="text-bold-800 primary darken-2">Reddit Scheduler</a>, All rights reserved. </span>
                 </p>
             </footer>
 
@@ -146,7 +152,7 @@
     <script src="<?=$this->Url->build('/plugins/jquery-lazy/jquery.lazy.min.js', true);?>" type="text/javascript"></script>
     <script src="<?=$this->Url->build('/plugins/blockui/jquery.blockUI.js', true);?>" type="text/javascript"></script>
     <script src="<?=$this->Url->build('/plugins/toastr/toastr.min.js', true);?>" type="text/javascript"></script>
-    <script src="<?=$this->Url->build('/plugins/sweetalert2/sweetalert2.min.js', true);?>" type="text/javascript"></script>
+    <!-- <script src="<?=$this->Url->build('/plugins/sweetalert2/sweetalert2.min.js', true);?>" type="text/javascript"></script> -->
 
     <link rel="stylesheet" href="<?=$this->Url->build('/plugins/jquery-confirm/dist/jquery-confirm.min.css', true);?>">
     <script src="<?=$this->Url->build('/plugins/jquery-confirm/dist/jquery-confirm.min.js', true);?>"></script>

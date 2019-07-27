@@ -1,17 +1,14 @@
 <div class="table-responsive col-sm-12">
-    <table class="table table-striped table-bordered server-side file-export" id="images_table">
+    <table class="table table-striped table-bordered server-side file-export" id="posts_table">
         <thead>
             <tr>
                 <th>S/N</th>
-                <th>Name</th>
-                <th>Image</th>
-                <!-- <th>Title</th> -->
-                <th width="12%">Upload IP</th>
-                <th>Safe</th>
-                <th>API Scan</th>
-                <th>Status</th>
-                <th>Age</th>
-                <th>Username</th>
+                <th>Title</th>
+                <th>Url</th>
+                <th>Time</th>
+                <th>Account</th>
+                <th>Subreddit</th>
+                <th>Done</th>
                 <th width="15%">Actions</th>
             </tr>
         </thead>
@@ -21,22 +18,19 @@
         <tfoot>
             <tr>
                 <th>S/N</th>
-                <th>Name</th>
-                <th>Image</th>
-                <!-- <th>Title</th> -->
-                <th width="12%">Upload IP</th>
-                <th>Safe</th>
-                <th>API Scan</th>
-                <th>Status</th>
-                <th>Age</th>
-                <th>Username</th>
+                <th>Title</th>
+                <th>Url</th>
+                <th>Time</th>
+                <th>Account</th>
+                <th>Subreddit</th>
+                <th>Done</th>
                 <th width="15%">Actions</th>
             </tr>
         </tfoot>
     </table>
 </div>
 
-<?=$this->element('datatable_options', ["record_name" => 'images', 'specific_id' => 'images_table', "ajax_table" => true, "autoreload" => false, "ajax_url" => $ajax_url])?>
+<?=$this->element('datatable_options', ["record_name" => 'posts', 'specific_id' => 'posts_table', "ajax_table" => true, "autoreload" => false, "ajax_url" => $ajax_url])?>
 <script>
     /*=========================================================================================
     File Name: datatables-sources.js

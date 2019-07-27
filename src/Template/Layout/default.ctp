@@ -13,7 +13,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'Img.to Shell';
+$cakeDescription = 'Reddit Scheduler';
 ?>
 <!DOCTYPE html>
 <html>

@@ -15,10 +15,10 @@
                     'url':"<?=$ajax_url?>",
                     'data': function(data){
 
-                        <?php if ($specific_id == "images_table"): ?>
-                        data.age = $('#maxAge').val();
-                        data.status_one = $('#status_one').val();
-                        data.status_two = $('#status_two').val();                            
+                        <?php if ($specific_id == "posts_table"): ?>
+                        // data.age = $('#maxAge').val();
+                        data.account_id = $('#accountDropdown').val();
+                        data.subreddit_id = $('#subredditDropdown').val();                            
                         <?php endif;?>
                         
                     }
@@ -81,16 +81,16 @@
 
             <?php endif;?>
 
-            <?php if ($specific_id == "images_table"): ?>
+            <?php if ($specific_id == "posts_table"): ?>
 
             $('#maxAge').keyup(function(){
-                <?=$specific_id . "_table"?>.draw();
+                //<?=$specific_id . "_table"?>.draw();
             });
 
-            $('#status_one').change(function(){
+            $('#accountDropdown').change(function(){
                 <?=$specific_id . "_table"?>.draw();
             });
-            $('#status_two').change(function(){
+            $('#subredditDropdown').change(function(){
                 <?=$specific_id . "_table"?>.draw();
             });
             <?php endif;?>

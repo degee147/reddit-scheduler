@@ -56,7 +56,7 @@
                             <p class="d-none">User Settings</p>
                         </a>
                         <div ngbdropdownmenu="" aria-labelledby="dropdownBasic3" class="dropdown-menu dropdown-menu-right">
-                            <a href="http://imge.to" class="dropdown-item py-1">
+                            <a href="<?=$this->Url->build('/', true);?>" class="dropdown-item py-1">
                                 <i class="ft-home mr-2"></i>
                                 <span>Home</span>
                             </a>
