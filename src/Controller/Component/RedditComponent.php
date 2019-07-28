@@ -101,18 +101,7 @@ class RedditComponent extends Component
 
     public function encrypt($string)
     {
-        return $this->encrypt_openssl($string);
         // return \Cake\Utility\Security::encrypt($string, $this->security_key);
-    }
-
-    public function decrypt($string)
-    {
-        return $this->decrypt_openssl($string);
-        // return \Cake\Utility\Security::decrypt($string, $this->security_key);
-    }
-
-    public function encrypt_openssl($string)
-    {
         $key = $this->security_key;
         $ivlen = openssl_cipher_iv_length($cipher = "AES-128-CBC");
         $iv = openssl_random_pseudo_bytes($ivlen);
@@ -120,11 +109,11 @@ class RedditComponent extends Component
         $hmac = hash_hmac('sha256', $ciphertext_raw, $this->security_key, $as_binary = true);
         $ciphertext = base64_encode($iv . $hmac . $ciphertext_raw);
         return $ciphertext;
-
     }
 
-    public function decrypt_openssl($string)
+    public function decrypt($string)
     {
+        // return \Cake\Utility\Security::decrypt($string, $this->security_key);
         $c = base64_decode($string);
         $key = $this->security_key;
         $ivlen = openssl_cipher_iv_length($cipher = "AES-128-CBC");
@@ -141,6 +130,7 @@ class RedditComponent extends Component
         return false;
     }
 
+    
     public function initialize(array $config)
     {
         $this->customUtil = new Custom();

@@ -63,7 +63,7 @@
                         var clientid = this.$content.find('.clientid').val();
                         var client_secret = this.$content.find('.client_secret').val();
                         if (!name) {
-                            $.alert('Please enter a name for this account');
+                            $.alert('Please enter the reddit username for this account');
                             return false;
                         }
                         if (!password) {
