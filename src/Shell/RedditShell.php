@@ -1,10 +1,10 @@
 <?php
 namespace App\Shell;
 
-use Cake\Console\Shell;
 use App\Controller\Component\CustomComponent;
 use App\Controller\Component\RedditComponent;
 use App\Utility\Custom;
+use Cake\Console\Shell;
 use Cake\Controller\ComponentRegistry;
 
 /**
@@ -41,7 +41,6 @@ class RedditShell extends Shell
         $this->Reddit = new RedditComponent(new ComponentRegistry());
     }
 
-
     /**
      * main() method.
      *
@@ -52,23 +51,24 @@ class RedditShell extends Shell
         // $this->out($this->OptionParser->help());
         $posts = $this->Posts->find()->where(['Posts.success' => 0])->contain($this->Reddit->postContains())->limit(100)->toArray();
 
-        if(!empty($posts)){
-            $access = (object)[];
+        if (!empty($posts)) {
+            $access = (object) [];
             $current_account = 0;
             foreach ($posts as $key => $post) {
-                if(empty($access) or $current_account != $post->account_id){
+                if (empty($access) or $current_account != $post->account_id) {
                     $accessRequest = $this->Reddit->getAccess($post->account_id);
-                    if($accessRequest != false){
-                        $access = $accessRequest;     
+                    if ($accessRequest != false) {
+                        $access = $accessRequest;
                         $current_account = $post->account_id;
                     }
                 }
-                if(!empty($access)){
-                    $this->Reddit->postToReddit($post, $access);                
+                if (!empty($access)) {
+                    $time = new \Cake\I18n\Time($post->schedule);
+                    if ($time->isThisWeek() and time() > (int) $time->toUnixString()) {
+                        $this->Reddit->postToReddit($post, $access);
+                    }
                 }
             }
-
         }
-
     }
 }
