@@ -38,6 +38,8 @@ class RedditComponent extends Component
                 'url' => $post->url,
                 'title' => $post->title,
                 'sr' => $post->subreddit->name,
+                'flair_id'=> $post->flair,
+                'flair_text'=> $post->flair,
                 // 'sr' => "science",
                 'kind' => 'link',
             ];

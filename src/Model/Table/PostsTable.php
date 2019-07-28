@@ -74,6 +74,11 @@ class PostsTable extends Table
             ->notEmptyString('url');
 
         $validator
+            ->scalar('flair')
+            ->maxLength('flair', 255)
+            ->allowEmptyString('flair');
+
+        $validator
             ->dateTime('schedule')
             ->requirePresence('schedule', 'create')
             ->notEmptyDateTime('schedule');

@@ -72,6 +72,18 @@
             </div>
         </div>
 
+        <div class="form-group row">
+            <label class="col-md-3 label-control" for="url">Flair:
+            </label>
+            <div class="col-md-6">
+                <div class="position-relative has-icon-left">
+                    <?=$this->Form->control('flair', ['templates' => ['inputContainer' => '{{content}}'], 'label' => false, 'class' => 'form-control', 'placeholder' => 'enter text', 'autocomplete' => 'off'])?>
+                    <div class="form-control-position">
+                        <i class="ft-file"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 

@@ -9,6 +9,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $title
  * @property string $url
+ * @property string|null $flair
  * @property \Cake\I18n\FrozenTime $schedule
  * @property int|null $account_id
  * @property int|null $subreddit_id
@@ -33,6 +34,7 @@ class Post extends Entity
     protected $_accessible = [
         'title' => true,
         'url' => true,
+        'flair' => true,
         'schedule' => true,
         'account_id' => true,
         'subreddit_id' => true,

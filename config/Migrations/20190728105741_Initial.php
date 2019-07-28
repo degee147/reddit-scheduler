@@ -50,6 +50,11 @@ class Initial extends AbstractMigration
                 'limit' => 255,
                 'null' => false,
             ])
+            ->addColumn('flair', 'string', [
+                'default' => null,
+                'limit' => 255,
+                'null' => true,
+            ])
             ->addColumn('schedule', 'datetime', [
                 'default' => null,
                 'limit' => null,
