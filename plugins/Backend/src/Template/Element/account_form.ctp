@@ -1,4 +1,6 @@
 <div class="form-body">
+    <p>Get Client ID and secret at <a href="https://ssl.reddit.com/prefs/apps/" target="_blank">https://ssl.reddit.com/prefs/apps/</a></p>
+
     <div class="form-group row">
         <label class="col-md-3 label-control" for="name"> Reddit Username:
             <span class="required" aria-required="true"> * </span>
