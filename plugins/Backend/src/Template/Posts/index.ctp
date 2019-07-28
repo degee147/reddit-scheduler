@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-6">
                             <h4 class="card-title">Post Schedules</h4>
                         </div>
                         <?=$this->element('posts_controls')?>

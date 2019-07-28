@@ -5,9 +5,15 @@
         if (!$.isEmptyObject(data)) {
             // $('.page-loader-wrapper').fadeIn();
             $.post(
-                "<?=$this->Url->build(['prefix' => false, 'controller' => 'Posts', 'action' => 'addSubReddit']);?>", data).done(function (response) {
+                "<?=$this->Url->build(['prefix' => false, 'controller' => 'Posts', 'action' => 'addSubReddit']);?>", {
+                    "data": data,
+                    "_csrfToken": "<?=$this->request->getParam('_csrfToken')?>"
+                }).done(function (response) {
                 if (response.success) {
                     swal("Success", "Done!", "success");
+                    var newOption = new Option(response.subreddit.name, response.subreddit.id, true, true);
+                    $('#<?=$select_id?>').append(newOption).trigger('change');
+                    console.log(response);
                 } else {
                     swal({
                         title: "Oops!",
@@ -27,7 +33,7 @@
         }
     }
 
-    function showAddSubreddit() { //data is key and model
+    function showAddSubreddit(data = {}) { //data is key and model
         swal({
             title: "Subreddit Title",
             // text: "<textarea id='reasontext'></textarea>",

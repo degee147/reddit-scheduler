@@ -8,6 +8,7 @@
             $.post(
                 "<?=$this->Url->build(['prefix' => false, 'controller' => 'Posts', 'action' => 'addAccount']);?>", {
                     "data": data,
+                    "_csrfToken": "<?=$this->request->getParam('_csrfToken')?>"
                 }).done(function (response) {
                 //console.log(response);
                 if (response.error) {
@@ -23,9 +24,9 @@
                 } else {
 
                     swal("Good job!", "You added a new reddit account!", "success");
-                    console.log(response);
-                    var newOption = new Option(response.supplier.name, response.supplier.id, true, true);
+                    var newOption = new Option(response.account.username, response.account.id, true, true);
                     $('#<?=$select_id?>').append(newOption).trigger('change');
+                    console.log(response);
                 }
 
                 hideLoading();

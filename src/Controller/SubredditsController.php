@@ -17,8 +17,8 @@ class SubredditsController extends AppController
         parent::initialize();
         //$this->loadModel('Departments');
         $this->set('page', "subreddits");
+        
     }
-
     /**
      * Index method
      *
@@ -26,8 +26,7 @@ class SubredditsController extends AppController
      */
     public function index()
     {
-        $subreddits = $this->paginate($this->Subreddits);
-
+        $subreddits = $this->Subreddits->find('all');
         $this->set(compact('subreddits'));
     }
 

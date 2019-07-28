@@ -83,6 +83,10 @@ class AppController extends Controller
 
         $this->Cu = new Custom();
 
+        $accounts = $this->Accounts->find('list', ['limit' => 2000]);
+        $subreddits = $this->Subreddits->find('list', ['limit' => 2000]);
+        $this->set(compact('accounts', 'subreddits'));
+
         /*
          * Enable the following component for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html

@@ -17,8 +17,8 @@ class AccountsController extends AppController
         parent::initialize();
         //$this->loadModel('Departments');
         $this->set('page', "accounts");
+        
     }
-
     /**
      * Index method
      *
@@ -26,8 +26,7 @@ class AccountsController extends AppController
      */
     public function index()
     {
-        $accounts = $this->paginate($this->Accounts);
-
+        $accounts = $this->Accounts->find('all');
         $this->set(compact('accounts'));
     }
 

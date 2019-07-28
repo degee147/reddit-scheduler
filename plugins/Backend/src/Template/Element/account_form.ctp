@@ -19,7 +19,7 @@
         </label>
         <div class="col-md-6">
             <div class="position-relative has-icon-left">
-                <?=$this->Form->control('password', ['templates' => ['inputContainer' => '{{content}}'], 'label' => false, 'class' => 'form-control password', 'placeholder' => 'enter text', 'autocomplete' => 'off'])?>
+                <?=$this->Form->control('password', ['templates' => ['inputContainer' => '{{content}}'], 'label' => false, 'class' => 'form-control password', 'placeholder' => 'enter text', 'autocomplete' => 'off', 'type'=>'text'])?>
                 <div class="form-control-position">
                     <i class="fa fa-key"></i>
                 </div>

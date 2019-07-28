@@ -26,7 +26,7 @@
             <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
                 <li class="nav-item <?=$page == 'posts' ? 'active' : ''?>">
                     <a
-                        href="<?=$this->Url->build(['prefix' => false, 'controller' => 'post', 'action' => 'index']);?>">
+                        href="<?=$this->Url->build(['prefix' => false, 'controller' => 'posts', 'action' => 'index']);?>">
                         <i class="ft-bookmark"></i>
                         <span data-i18n="" class="menu-title">Posts</span>
                         <span class="tag badge badge-pill badge-dark float-right mr-1 mt-1">
@@ -36,7 +36,7 @@
                 </li>
                 <li class="nav-item <?=$page == 'subreddits' ? 'active' : ''?>">
                     <a
-                        href="<?=$this->Url->build(['prefix' => false, 'controller' => 'Images', 'action' => 'index']);?>">
+                        href="<?=$this->Url->build(['prefix' => false, 'controller' => 'Subreddits', 'action' => 'index']);?>">
                         <i class="ft-aperture" aria-hidden="true"></i>
                         <span data-i18n="" class="menu-title">Subreddits</span>
                         <span class="tag badge badge-pill badge-dark float-right mr-1 mt-1">

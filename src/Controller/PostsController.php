@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Routing\Router;
 
 /**
  * Posts Controller
@@ -18,9 +19,7 @@ class PostsController extends AppController
         parent::initialize();
         //$this->loadModel('Departments');
         $this->set('page', "posts");
-        $accounts = $this->Posts->Accounts->find('list', ['limit' => 200]);
-        $subreddits = $this->Posts->Subreddits->find('list', ['limit' => 200]);
-        $this->set(compact('accounts', 'subreddits'));
+        
     }
 
     /**
@@ -73,6 +72,183 @@ class PostsController extends AppController
         $this->set('post', $post);
     }
 
+    public function getAccountsJson(){
+
+        $this->request->allowMethod('ajax');
+        $response = [
+            "success" => true,
+        ];
+
+        // debug($this->request->getQuery());
+        // dd($this->request->getAttribute('params'));
+
+        $query = $this->Accounts->find();
+
+        if (!empty($this->request->getQuery()['q'])) {
+
+            $search_term = $this->Custom->escapeString($this->request->getQuery()['q']);
+
+            $query->where([
+                'OR' => [
+                    ['Accounts.username LIKE' => "%" . $search_term . "%"],
+                ],
+            ]);
+
+        }
+
+        $data = $query->toArray();
+
+        // dd($query);
+
+        $query_data = [];
+        if (!empty($data)) {
+            foreach ($data as $value) {
+                $query_data[] = [
+                    'id' => $value['id'],
+                    'name' => $value['username'],
+                ];
+            }
+        }
+
+        // dd($user_data);
+
+        $response['data'] = $query_data;
+        $response['total_count'] = count($data);
+
+        $this->set([
+            'response' => $response,
+            //'data' => $this->request->getData(),
+            '_serialize' => 'response',
+        ]);
+        $this->RequestHandler->renderAs($this, 'json');
+
+
+    }
+
+    public function getSubredditsJson(){
+
+        $this->request->allowMethod('ajax');
+        $response = [
+            "success" => true,
+        ];
+
+        // debug($this->request->getQuery());
+        // dd($this->request->getAttribute('params'));
+
+        $query = $this->Subreddits->find();
+
+        if (!empty($this->request->getQuery()['q'])) {
+
+            $search_term = $this->Custom->escapeString($this->request->getQuery()['q']);
+
+            $query->where([
+                'OR' => [
+                    ['Subreddits.name LIKE' => "%" . $search_term . "%"],
+                ],
+            ]);
+
+        }
+
+        $data = $query->toArray();
+
+        // dd($query);
+
+        $query_data = [];
+        if (!empty($data)) {
+            foreach ($data as $value) {
+                $query_data[] = [
+                    'id' => $value['id'],
+                    'name' => $value['name'],
+                ];
+            }
+        }
+
+        // dd($user_data);
+
+        $response['data'] = $query_data;
+        $response['total_count'] = count($data);
+
+        $this->set([
+            'response' => $response,
+            //'data' => $this->request->getData(),
+            '_serialize' => 'response',
+        ]);
+        $this->RequestHandler->renderAs($this, 'json');
+
+
+    }
+    public function addAccount()
+    {
+        $this->request->allowMethod('ajax');
+        $response = [
+            "success" => false,
+        ];
+        // dd($this->request->getData());
+
+        $account = $this->Accounts->newEntity();
+        if (!empty($this->request->getData()['data'])) {
+            $account = $this->Accounts->patchEntity($account, $this->request->getData()['data']);
+            // $account->password = null;
+            //$department->name = null;
+            if ($this->Accounts->save($account)) {
+                $response['success'] = true;
+                $response['account'] = $account;
+            } else {
+                // $errors = $supplier->getErrors();
+                $message = "An error occured. Please try again";
+                $response['success'] = false;
+                $response['error'] = true;
+                $response['message'] = $message;
+                $response['data'] = $this->request->getData()['data'];
+            }
+            //$this->response->withStringBody(json_encode($response));
+
+        }
+
+        $this->set([
+            'response' => $response,
+            //'data' => $this->request->getData(),
+            '_serialize' => 'response',
+        ]);
+        $this->RequestHandler->renderAs($this, 'json');
+
+
+    }
+    public function addSubReddit()
+    {
+        $response = [
+            "success" => false,
+        ];
+
+        $subreddit = $this->Subreddits->newEntity();
+        if (!empty($this->request->getData()['data'])) {
+            $subreddit = $this->Subreddits->patchEntity($subreddit, $this->request->getData()['data']);
+            if ($this->Subreddits->save($subreddit)) {
+                $response['success'] = true;
+                $response['subreddit'] = $subreddit;
+            } else {
+                // $errors = $subreddit->getErrors();
+                // dd($subreddit);
+                $message = "An error occured. Please try again";
+                $response['success'] = false;
+                $response['error'] = true;
+                $response['message'] = $message;
+                $response['data'] = $this->request->getData()['data'];
+            }
+            //$this->response->withStringBody(json_encode($response));
+
+        }
+
+        $this->set([
+            'response' => $response,
+            //'data' => $this->request->getData(),
+            '_serialize' => 'response',
+        ]);
+        $this->RequestHandler->renderAs($this, 'json');
+
+
+    }
+
     /**
      * Edit method
      *
@@ -106,7 +282,7 @@ class PostsController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
+        // $this->request->allowMethod(['post', 'delete']);
         $post = $this->Posts->get($id);
         if ($this->Posts->delete($post)) {
             $this->Flash->success(__('The post has been deleted.'));
@@ -194,7 +370,6 @@ class PostsController extends AppController
 
         foreach ($itemsArray as $item) {
 
-            $user = $this->Custom->getImageUploader($item);
             $id = ($index + 1);
             // dd($item);
             $data_array = [
@@ -205,7 +380,7 @@ class PostsController extends AppController
                 $item['account']['username'],
                 $item['subreddit']['name'],
                 $item['success'] ? 'YES' :'NO' ,
-                '<a href="' . Router::url(['prefix' => false, 'controller' => 'Post', 'action' => 'edit', $item['id']]) . '"  class="btn btn-xs btn btn-raised btn-icon btn-success mr-1 btn-sm" title="Edit this post"><i class="fas fa-edit"></i></a>
+                '<a href="' . Router::url(['prefix' => false, 'controller' => 'Posts', 'action' => 'edit', $item['id']]) . '"  class="btn btn-xs btn btn-raised btn-icon btn-success mr-1 btn-sm" title="Edit this post"><i class="fas fa-edit"></i></a>
                 <a href="' . Router::url(['prefix' => false, 'controller' => 'Posts', 'action' => 'delete', $item['id']]) . '"  onclick="return confirm(\'Delete this post?\')"  title="Delete this post" class="btn btn-xs btn btn-raised btn-icon btn-danger mr-1 btn-sm"><i class="fas fa-trash-alt"></i></a>
                 ' ,
             ];
