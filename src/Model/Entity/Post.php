@@ -10,8 +10,8 @@ use Cake\ORM\Entity;
  * @property string $title
  * @property string $url
  * @property \Cake\I18n\FrozenTime $schedule
- * @property int $account_id
- * @property int $subreddit_id
+ * @property int|null $account_id
+ * @property int|null $subreddit_id
  * @property bool|null $success
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified

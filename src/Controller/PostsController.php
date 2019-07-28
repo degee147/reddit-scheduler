@@ -330,6 +330,8 @@ class PostsController extends AppController
 
         $query = $this->Posts->find('all')->contain($this->postContains());
 
+        // dd($query->toArray());
+
         if (!empty($account_id)) {
             $query->andWhere(['Posts.account_id' => $account_id]);
         }
@@ -363,6 +365,7 @@ class PostsController extends AppController
         $query->limit(intval($request['length']))->offset(intval($request['start']));
 
         $itemsArray = $query->toArray();
+        
 
         $response["data"] = [];
 
@@ -377,8 +380,8 @@ class PostsController extends AppController
                 $item['title'],
                 $item['url'],
                 $this->Custom->cakeTime($item['schedule']),
-                $item['account']['username'],
-                $item['subreddit']['name'],
+                !empty($item['account']) ? $item['account']['username'] : 'N/A',
+                !empty($item['subreddit']) ? $item['subreddit']['name'] : 'N/A',
                 $item['success'] ? 'YES' :'NO' ,
                 '<a href="' . Router::url(['prefix' => false, 'controller' => 'Posts', 'action' => 'edit', $item['id']]) . '"  class="btn btn-xs btn btn-raised btn-icon btn-success mr-1 btn-sm" title="Edit this post"><i class="fas fa-edit"></i></a>
                 <a href="' . Router::url(['prefix' => false, 'controller' => 'Posts', 'action' => 'delete', $item['id']]) . '"  onclick="return confirm(\'Delete this post?\')"  title="Delete this post" class="btn btn-xs btn btn-raised btn-icon btn-danger mr-1 btn-sm"><i class="fas fa-trash-alt"></i></a>

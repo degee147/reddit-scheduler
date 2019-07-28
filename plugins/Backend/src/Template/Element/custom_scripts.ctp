@@ -59,12 +59,13 @@
 
         $('.select2').select2({
             placeholder: 'Pick an option',
-            theme: "classic"
+            theme: "classic",
         });
         
         $('.select2_all').select2({
             placeholder: 'All',
-            theme: "classic"
+            theme: "classic",
+            allowClear: true,
         });
 
         $('.select2_multiple').select2({

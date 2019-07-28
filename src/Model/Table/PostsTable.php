@@ -42,12 +42,10 @@ class PostsTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Accounts', [
-            'foreignKey' => 'account_id',
-            'joinType' => 'INNER'
+            'foreignKey' => 'account_id'
         ]);
         $this->belongsTo('Subreddits', [
-            'foreignKey' => 'subreddit_id',
-            'joinType' => 'INNER'
+            'foreignKey' => 'subreddit_id'
         ]);
     }
 
