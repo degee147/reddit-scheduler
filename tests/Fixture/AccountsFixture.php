@@ -17,7 +17,7 @@ class AccountsFixture extends TestFixture
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'name' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_bin', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'password' => ['type' => 'string', 'length' => 4000, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_bin', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'password' => ['type' => 'string', 'length' => 1000, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_bin', 'comment' => '', 'precision' => null, 'fixed' => null],
         'clientid' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_bin', 'comment' => '', 'precision' => null, 'fixed' => null],
         'client_secret' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_bin', 'comment' => '', 'precision' => null, 'fixed' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
@@ -45,8 +45,8 @@ class AccountsFixture extends TestFixture
                 'password' => 'Lorem ipsum dolor sit amet',
                 'clientid' => 'Lorem ipsum dolor sit amet',
                 'client_secret' => 'Lorem ipsum dolor sit amet',
-                'created' => '2019-07-28 08:24:15',
-                'modified' => '2019-07-28 08:24:15'
+                'created' => '2019-07-28 08:49:57',
+                'modified' => '2019-07-28 08:49:57'
             ],
         ];
         parent::init();

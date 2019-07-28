@@ -90,14 +90,15 @@ class AppController extends Controller
         $this->set(compact('accounts', 'subreddits'));
 
 
-        // $this->Reddit->getAccessToken();
-        $str = "degee";
-        debug($str);
-        $en = $this->Reddit->encrypt($str);
-        debug($en);
-        $dc = $this->Reddit->decrypt($en);
-        debug($dc);
-        dd();
+        $this->Reddit->postToReddit();
+        // $this->Reddit->getAccess();
+        // $str = "degee";
+        // debug($str);
+        // $en = $this->Reddit->encrypt($str);
+        // debug($en);
+        // $dc = $this->Reddit->decrypt($en);
+        // debug($dc);
+        // dd();
         
 
 

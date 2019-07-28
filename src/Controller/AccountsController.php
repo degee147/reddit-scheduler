@@ -77,11 +77,11 @@ class AccountsController extends AppController
      */
     public function edit($id = null)
     {
-        $account = $this->Accounts->get($id, [
-            'contain' => []
-        ]);
+        $account = $this->Accounts->get($id);
+        $account->password = $this->Reddit->decrypt($account->password); //decrypt so it doesn't change
         if ($this->request->is(['patch', 'post', 'put'])) {
             $account = $this->Accounts->patchEntity($account, $this->request->getData());
+            $account->password = $this->Reddit->encrypt($account->password); //encrypt back and save to db
             if ($this->Accounts->save($account)) {
                 $this->Flash->success(__('The account has been saved.'));
 

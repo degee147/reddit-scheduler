@@ -65,7 +65,7 @@ class AccountsTable extends Table
 
         $validator
             ->scalar('password')
-            ->maxLength('password', 4000)
+            ->maxLength('password', 1000)
             ->requirePresence('password', 'create')
             ->notEmptyString('password');
 

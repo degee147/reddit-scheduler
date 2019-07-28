@@ -48,9 +48,7 @@ class PostsController extends AppController
         $this->set('post', $post);
     }
 
-    private function postContains(){
-        return ['Accounts', 'Subreddits'];
-    }
+    
 
     /**
      * Add method
@@ -90,7 +88,7 @@ class PostsController extends AppController
 
             $query->where([
                 'OR' => [
-                    ['Accounts.username LIKE' => "%" . $search_term . "%"],
+                ['Accounts.name LIKE' => "%" . $search_term . "%"],
                 ],
             ]);
 
@@ -105,7 +103,7 @@ class PostsController extends AppController
             foreach ($data as $value) {
                 $query_data[] = [
                     'id' => $value['id'],
-                    'name' => $value['username'],
+                    'name' => $value['name'],
                 ];
             }
         }
@@ -329,7 +327,7 @@ class PostsController extends AppController
         $account_id = !empty($request['account_id']) ? $request['account_id'] : '';
         $subreddit_id = !empty($request['subreddit_id']) ? $request['subreddit_id'] : '';
 
-        $query = $this->Posts->find('all')->contain($this->postContains());
+        $query = $this->Posts->find('all')->contain($this->Reddit->postContains());
 
         // dd($query->toArray());
 
