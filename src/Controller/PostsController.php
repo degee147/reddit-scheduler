@@ -188,6 +188,7 @@ class PostsController extends AppController
         $account = $this->Accounts->newEntity();
         if (!empty($this->request->getData()['data'])) {
             $account = $this->Accounts->patchEntity($account, $this->request->getData()['data']);
+            $account->password = $this->Reddit->encrypt($account->password);            
             // $account->password = null;
             //$department->name = null;
             if ($this->Accounts->save($account)) {
@@ -380,7 +381,7 @@ class PostsController extends AppController
                 $item['title'],
                 $item['url'],
                 $this->Custom->cakeTime($item['schedule']),
-                !empty($item['account']) ? $item['account']['username'] : 'N/A',
+                !empty($item['account']) ? $item['account']['name'] : 'N/A',
                 !empty($item['subreddit']) ? $item['subreddit']['name'] : 'N/A',
                 $item['success'] ? 'YES' :'NO' ,
                 '<a href="' . Router::url(['prefix' => false, 'controller' => 'Posts', 'action' => 'edit', $item['id']]) . '"  class="btn btn-xs btn btn-raised btn-icon btn-success mr-1 btn-sm" title="Edit this post"><i class="fas fa-edit"></i></a>

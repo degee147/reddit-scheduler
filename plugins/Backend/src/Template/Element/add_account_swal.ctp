@@ -24,7 +24,7 @@
                 } else {
 
                     swal("Good job!", "You added a new reddit account!", "success");
-                    var newOption = new Option(response.account.username, response.account.id, true, true);
+                    var newOption = new Option(response.account.name, response.account.id, true, true);
                     $('#<?=$select_id?>').append(newOption).trigger('change');
                     console.log(response);
                 }
@@ -58,19 +58,31 @@
                     text: 'Save',
                     btnClass: 'btn-primary',
                     action: function () {
-                        var username = this.$content.find('.username').val();
+                        var name = this.$content.find('.name').val();
                         var password = this.$content.find('.password').val();
-                        if (!username) {
-                            $.alert('Please enter a username');
+                        var clientid = this.$content.find('.clientid').val();
+                        var client_secret = this.$content.find('.client_secret').val();
+                        if (!name) {
+                            $.alert('Please enter a name for this account');
                             return false;
                         }
                         if (!password) {
-                            $.alert('Please enter a password for this account');
+                            $.alert('Please enter the password for this account');
+                            return false;
+                        }
+                        if (!clientid) {
+                            $.alert('Please enter the client id');
+                            return false;
+                        }
+                        if (!client_secret) {
+                            $.alert('Please enter the client secret');
                             return false;
                         }
                         var data = {
-                            username: username,
+                            name: name,
                             password: password,
+                            clientid: clientid,
+                            client_secret: client_secret,
                         }
                         addAccount(data);
 
@@ -83,8 +95,10 @@
             onContentReady: function () {
                 if (response !== undefined) {
                     if (response.data) {
-                        this.$content.find('.username').val(response.data.username);
+                        this.$content.find('.name').val(response.data.name);
                         this.$content.find('.password').val(response.data.password);
+                        this.$content.find('.clientid').val(response.data.clientid);
+                        this.$content.find('.client_secret').val(response.data.client_secret);
                     }
                 }
 

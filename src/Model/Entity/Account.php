@@ -7,8 +7,10 @@ use Cake\ORM\Entity;
  * Account Entity
  *
  * @property int $id
- * @property string $username
+ * @property string $name
  * @property string $password
+ * @property string $clientid
+ * @property string $client_secret
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
@@ -26,8 +28,10 @@ class Account extends Entity
      * @var array
      */
     protected $_accessible = [
-        'username' => true,
+        'name' => true,
         'password' => true,
+        'clientid' => true,
+        'client_secret' => true,
         'created' => true,
         'modified' => true,
         'posts' => true

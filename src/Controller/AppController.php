@@ -29,6 +29,7 @@ class AppController extends Controller
 {
 
     public $Cu; //for use with custom utility
+    
 
     /**
      * Initialization hook method.
@@ -53,6 +54,7 @@ class AppController extends Controller
         ]);
         $this->loadComponent('Flash');
         $this->loadComponent('Custom');
+        $this->loadComponent('Reddit');
 
         $this->loadComponent('Auth', [
             // 'authorize' => ['Controller'],
@@ -86,6 +88,18 @@ class AppController extends Controller
         $accounts = $this->Accounts->find('list', ['limit' => 2000]);
         $subreddits = $this->Subreddits->find('list', ['limit' => 2000]);
         $this->set(compact('accounts', 'subreddits'));
+
+
+        // $this->Reddit->getAccessToken();
+        $str = "degee";
+        debug($str);
+        $en = $this->Reddit->encrypt($str);
+        debug($en);
+        $dc = $this->Reddit->decrypt($en);
+        debug($dc);
+        dd();
+        
+
 
         /*
          * Enable the following component for recommended CakePHP security settings.

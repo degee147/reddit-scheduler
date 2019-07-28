@@ -27,7 +27,7 @@
                             <thead>
                                 <tr>
                                     <th>S/N</th>
-                                    <th>Username</th>
+                                    <th>Name</th>
                                     <th>Created</th>
                                     <th>Modified</th>
                                     <th width="15%">Action</th>
@@ -40,7 +40,7 @@
                                         <?=$sn++?>
                                     </td>
                                     <td>
-                                        <?=h($account->username)?>
+                                        <?=h($account->name)?>
                                     </td>
 
                                     <td>
@@ -59,7 +59,7 @@
                             <tfoot>
                                 <tr>
                                     <th>S/N</th>
-                                    <th>Username</th>
+                                    <th>Name</th>
                                     <th>Created</th>
                                     <th>Modified</th>
                                     <th width="15%">Action</th>

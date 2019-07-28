@@ -56,6 +56,8 @@ class AccountsController extends AppController
         $account = $this->Accounts->newEntity();
         if ($this->request->is('post')) {
             $account = $this->Accounts->patchEntity($account, $this->request->getData());
+            // dd($this->Reddit->encrypt($account->password));
+            $account->password = $this->Reddit->encrypt($account->password);
             if ($this->Accounts->save($account)) {
                 $this->Flash->success(__('The account has been saved.'));
 
