@@ -82,6 +82,8 @@ class RedditShell extends Shell
                         $this->out('posted is ' . $posted);
                     }
                 }
+
+                sleep(10);
             }
         }
     }
