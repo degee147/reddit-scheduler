@@ -308,15 +308,15 @@ class PostsController extends AppController
             $orderType = "DESC";
         } elseif ($orderByColumnIndex == '1') {
             $orderByColumnIndex = "Posts.title";
-        } elseif ($orderByColumnIndex == '3') {
+        } elseif ($orderByColumnIndex == '2') {
             $orderByColumnIndex = "Posts.url";
-        } elseif ($orderByColumnIndex == '4') {
+        } elseif ($orderByColumnIndex == '3') {
             $orderByColumnIndex = "Posts.schedule";
-        } elseif ($orderByColumnIndex == '5') {
+        } elseif ($orderByColumnIndex == '4') {
             $orderByColumnIndex = "Posts.account_id";
-        } elseif ($orderByColumnIndex == '6') {
+        } elseif ($orderByColumnIndex == '5') {
             $orderByColumnIndex = "Posts.subreddit_id";
-        } elseif ($orderByColumnIndex == '7') {
+        } elseif ($orderByColumnIndex == '6') {
             $orderByColumnIndex = "Posts.success";
         } else {
             $orderByColumnIndex = "Posts.id";
