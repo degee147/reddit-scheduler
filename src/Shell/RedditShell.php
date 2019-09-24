@@ -58,24 +58,28 @@ class RedditShell extends Shell
             $access = (object) [];
             $current_account = 0;
             foreach ($posts as $key => $post) {
-                $this->out('posting '. $post->title);
+                $this->out('posting ' . $post->title);
                 if (empty($access) or $current_account != $post->account_id) {
                     $this->out('requesting access');
                     $accessRequest = $this->Reddit->getAccess($post->account_id);
                     if ($accessRequest != false) {
                         $access = $accessRequest;
                         $this->out('has access');
-                        $this->out('access is '. json_encode($accessRequest));
+                        $this->out('access is ' . json_encode($accessRequest));
                         $current_account = $post->account_id;
                     }
                 }
                 if (!empty($access)) {
                     $time = new \Cake\I18n\Time($post->schedule);
                     $this->out('posting');
+                    $this->out('time now is ' . time());
+                    $this->out('post time is ' . (int) $time->toUnixString());
+
+
                     // if ($time->isThisWeek() and time() > (int) $time->toUnixString()) {
                     if (time() > (int) $time->toUnixString()) {
                         $posted = $this->Reddit->postToReddit($post, $access);
-                        $this->out('posted is '. $posted);
+                        $this->out('posted is ' . $posted);
                     }
                 }
             }
