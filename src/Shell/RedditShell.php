@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Shell;
 
 use App\Controller\Component\CustomComponent;
@@ -49,7 +50,9 @@ class RedditShell extends Shell
     public function main()
     {
         // $this->out($this->OptionParser->help());
-        $posts = $this->Posts->find()->where(['Posts.success' => 0])->contain($this->Reddit->postContains())->limit(100)->toArray();
+        $posts = $this->Posts->find()->where(['Posts.success' => 0])->contain($this->Reddit->postContains())
+            //->limit(100)
+            ->toArray();
 
         if (!empty($posts)) {
             $access = (object) [];
@@ -64,7 +67,8 @@ class RedditShell extends Shell
                 }
                 if (!empty($access)) {
                     $time = new \Cake\I18n\Time($post->schedule);
-                    if ($time->isThisWeek() and time() > (int) $time->toUnixString()) {
+                    // if ($time->isThisWeek() and time() > (int) $time->toUnixString()) {
+                    if (time() > (int) $time->toUnixString()) {
                         $this->Reddit->postToReddit($post, $access);
                     }
                 }
