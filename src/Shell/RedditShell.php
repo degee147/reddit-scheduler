@@ -65,7 +65,7 @@ class RedditShell extends Shell
                     if ($accessRequest != false) {
                         $access = $accessRequest;
                         $this->out('has access');
-                        $this->out('access is '. $accessRequest);
+                        $this->out('access is '. json_decode($accessRequest));
                         $current_account = $post->account_id;
                     }
                 }
