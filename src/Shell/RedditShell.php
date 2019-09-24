@@ -78,6 +78,7 @@ class RedditShell extends Shell
 
                     // if ($time->isThisWeek() and time() > (int) $time->toUnixString()) {
                     if (time() > (int) $time->toUnixString()) {
+                        $this->out('time to post');
                         $posted = $this->Reddit->postToReddit($post, $access);
                         $this->out('posted is ' . $posted);
                     }
