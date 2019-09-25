@@ -63,12 +63,25 @@ class RedditComponent extends Component
             // var_dump($response->success);
             // dd('ss');
             if($httpcode >= 200 && $httpcode < 300){
-                $post->success = $response->success;
+                // $post->success = $response->success;
+                $post->success = true;
                 $this->Posts->save($post);
                 return true;        
+            }else{
+                $this->doLog('post_to_reddit.log', $data);
             }
         }
         return false;
+
+    }
+
+    public function doLog($filename, $data)
+    {
+
+        $file = new \Cake\Filesystem\File(LOGS . DS . $filename, true, 0644);
+        $file->append($data);
+        // $file->append(json_encode($this->request->getData()));
+        // $file->append(json_encode($this->request->getQuery()));
 
     }
 

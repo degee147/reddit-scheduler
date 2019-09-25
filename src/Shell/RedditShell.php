@@ -51,7 +51,7 @@ class RedditShell extends Shell
     {
         // $this->out($this->OptionParser->help());
         $posts = $this->Posts->find()->where(['Posts.success' => 0])->contain($this->Reddit->postContains())
-            //->limit(100)
+            ->limit(1000)
             ->toArray();
 
         if (!empty($posts)) {
@@ -76,8 +76,8 @@ class RedditShell extends Shell
                     $this->out('post time is ' . (int) $time->toUnixString());
 
 
-                    // if ($time->isThisWeek() and time() > (int) $time->toUnixString()) {
-                    if (time() > (int) $time->toUnixString()) {
+                    if ($time->isThisWeek() and time() > (int) $time->toUnixString()) {
+                    // if (time() > (int) $time->toUnixString()) {
                         $this->out('time to post');
                         $posted = $this->Reddit->postToReddit($post, $access);
                         $this->out('posted is ' . $posted);

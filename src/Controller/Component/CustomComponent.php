@@ -22,6 +22,7 @@ class CustomComponent extends Component
     public $customUtil; //for use with custom utility
 
     
+    
     public function cakeTime($time)
     {
         $time = new Time($time);
